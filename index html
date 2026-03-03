@@ -1,6 +1,254 @@
-[
-  {"method": "google_search", "queries": ["SKPMg2 standard 4", "SKPMg2 standard 4.1 guru sebagai perancang"]},
-  {"method": "google_search", "queries": ["SKPMg2 standard 4.2.1 guru sebagai pengawal proses", "SKPMg2 standard 4.2.2 guru sebagai pengawal suasana"]},
-  {"method": "google_search", "queries": ["SKPMg2 standard 4.3 guru sebagai pembimbing", "SKPMg2 standard 4.4.1 guru sebagai pendorong minda"]},
-  {"method": "google_search", "queries": ["SKPMg2 standard 4.4.2 guru sebagai pendorong emosi", "SKPMg2 standard 4.5 guru sebagai penilai", "SKPMg2 standard 4.6 murid sebagai pembelajar aktif"]}
-]
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota Interaktif SKPMg2 Standard 4</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #27ae60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: var(--primary);
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        nav button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Content Area */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-content { display: block; }
+        .quiz-container { display: none; }
+        .hidden { display: none !important; }
+
+        h2 { color: var(--primary); border-bottom: 3px solid var(--secondary); padding-bottom: 10px; }
+        
+        ul { line-height: 1.8; }
+
+        .btn-quiz {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 15px;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Quiz Styles */
+        .question-box {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .options-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border: 1px solid var(--secondary);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .options-btn:hover { background: #e1f5fe; }
+        
+        .feedback-wrong { color: var(--accent); font-weight: bold; margin-top: 10px; }
+        
+        .congrats {
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <button onclick="showSection('4.1')">4.1 Perancang</button>
+    <button onclick="showSection('4.2.1')">4.2.1 Pengawal Proses</button>
+    <button onclick="showSection('4.2.2')">4.2.2 Pengawal Suasana</button>
+    <button onclick="showSection('4.3')">4.3 Pembimbing</button>
+    <button onclick="showSection('4.4.1')">4.4.1 Pendorong Minda</button>
+    <button onclick="showSection('4.4.2')">4.4.2 Pendorong Emosi</button>
+    <button onclick="showSection('4.5')">4.5 Penilai</button>
+    <button onclick="showSection('4.6')">4.6 Murid Aktif</button>
+</nav>
+
+<div class="container" id="main-container">
+    <div id="nota-display" class="section-content">
+        <div id="content-body">
+            <h2>Selamat Datang ke Sistem Nota SKPMg2 Standard 4</h2>
+            <p>Sila pilih aspek di bar navigasi untuk memulakan sesi pembelajaran anda.</p>
+        </div>
+        <button id="quiz-trigger" class="btn-quiz hidden" onclick="startQuiz()">Mula Kuiz Aspek Ini</button>
+    </div>
+
+    <div id="quiz-display" class="quiz-container">
+        <h2 id="quiz-title">Kuiz</h2>
+        <div id="quiz-content"></div>
+    </div>
+</div>
+
+<script>
+    const dataNota = {
+        '4.1': {
+            title: "4.1: Guru Sebagai Perancang",
+            content: "Guru bertindak sebagai perancang untuk memastikan kesediaan dan persediaan rapi bagi mencapai objektif pembelajaran.<ul><li>Menyediakan RPH yang mengandungi objektif yang boleh diukur.</li><li>Menentukan strategi dan aktiviti yang sesuai.</li><li>Menyediakan sumber pendidikan (BBM) yang relevan.</li></ul>",
+            questions: [
+                {q: "Apakah elemen utama dalam 4.1?", a: ["Rancangan Pelajaran Harian", "Kawalan Kelas", "Motivasi Murid", "Disiplin"], correct: 0, level: "E"},
+                {q: "Guru perlu menyediakan RPH berdasarkan...", a: ["Buku teks sahaja", "Sukatan/DSKP", "Minat peribadi", "Arahan rakan"], correct: 1, level: "E"},
+                {q: "Berapakah elemen utama dalam tindakan guru bagi aspek 4.1?", a: ["2", "3", "4", "5"], correct: 1, level: "E"},
+                {q: "Objektif pembelajaran mestilah bersifat...", a: ["Abstrak", "SMART (Boleh diukur)", "Umum", "Sukar"], correct: 1, level: "E"},
+                {q: "Penyediaan sumber pendidikan dalam 4.1 merujuk kepada...", a: ["BBM/ICT", "Kerusi meja", "Papan tulis", "Buku rekod"], correct: 0, level: "E"},
+                {q: "Bagaimanakah guru merancang peruntukan masa?", a: ["Ikut mood", "Berdasarkan langkah PdP", "Tiada had masa", "Sama untuk semua tajuk"], correct: 1, level: "M"},
+                {q: "Perancangan aktiviti haruslah berpusatkan...", a: ["Guru", "Buku", "Murid", "Peperiksaan"], correct: 2, level: "M"},
+                {q: "Mengapa perancangan persekitaran fizikal tidak masuk dalam 4.1?", a: ["Ia masuk dalam 4.2.2", "Ia tidak penting", "Guru tiada kuasa", "Ia kerja kerani"], correct: 0, level: "M"},
+                {q: "Dalam aspek 4.1, perancangan yang cemerlang mestilah...", a: ["Mengikut tahap keupayaan murid", "Hanya untuk murid pandai", "Hanya satu hala", "Sama setiap tahun"], correct: 0, level: "H"},
+                {q: "Impak perancangan yang lemah akan menyebabkan...", a: ["PdP tidak terarah", "Murid terlalu gembira", "Guru cepat balik", "Bilik darjah bersih"], correct: 0, level: "H"}
+            ]
+        },
+        '4.2.1': { title: "4.2.1: Guru Sebagai Pengawal Proses", content: "Guru mengawal proses pembelajaran dengan mengurus masa, aktiviti, dan penyertaan murid secara berkesan.", questions: generatePlaceholderQuestions("4.2.1") },
+        '4.2.2': { title: "4.2.2: Guru Sebagai Pengawal Suasana", content: "Mengurus persekitaran pembelajaran (fizikal dan psikologi) agar kondusif.", questions: generatePlaceholderQuestions("4.2.2") },
+        '4.3': { title: "4.3: Guru Sebagai Pembimbing", content: "Guru memberi tunjuk ajar dan panduan untuk membantu murid menguasai kemahiran.", questions: generatePlaceholderQuestions("4.3") },
+        '4.4.1': { title: "4.4.1: Guru Sebagai Pendorong Minda", content: "Merangsang pemikiran kritis dan kreatif murid melalui soalan KBAT.", questions: generatePlaceholderQuestions("4.4.1") },
+        '4.4.2': { title: "4.4.2: Guru Sebagai Pendorong Emosi", content: "Memberi pujian dan sokongan moral untuk membina keyakinan diri murid.", questions: generatePlaceholderQuestions("4.4.2") },
+        '4.5': { title: "4.5: Guru Sebagai Penilai", content: "Menggunakan pelbagai kaedah pentaksiran untuk mengukur tahap penguasaan murid.", questions: generatePlaceholderQuestions("4.5") },
+        '4.6': { title: "4.6: Murid Sebagai Pembelajar Aktif", content: "Murid terlibat secara aktif dalam PdP, berkolaborasi, dan berkomunikasi.", questions: generatePlaceholderQuestions("4.6") }
+    };
+
+    let currentAspek = '';
+    let currentQuestionIndex = 0;
+
+    function showSection(id) {
+        currentAspek = id;
+        const data = dataNota[id];
+        document.getElementById('content-body').innerHTML = `<h2>${data.title}</h2><p>${data.content}</p>`;
+        document.getElementById('quiz-trigger').classList.remove('hidden');
+        document.getElementById('nota-display').classList.remove('hidden');
+        document.getElementById('quiz-display').classList.add('hidden');
+        document.getElementById('navbar').classList.remove('hidden');
+    }
+
+    function startQuiz() {
+        document.getElementById('nota-display').classList.add('hidden');
+        document.getElementById('navbar').classList.add('hidden'); // Tutup navigasi semasa kuiz
+        document.getElementById('quiz-display').classList.remove('hidden');
+        currentQuestionIndex = 0;
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const questions = dataNota[currentAspek].questions;
+        const qData = questions[currentQuestionIndex];
+        let html = `<h3>Soalan ${currentQuestionIndex + 1} / 10</h3>
+                    <div class="question-box">
+                        <p><strong>${qData.q}</strong></p>`;
+        
+        qData.a.forEach((opt, index) => {
+            html += `<button class="options-btn" onclick="checkAnswer(${index})">${opt}</button>`;
+        });
+        
+        html += `<div id="feedback"></div></div>`;
+        document.getElementById('quiz-content').innerHTML = html;
+    }
+
+    function checkAnswer(choice) {
+        const correctIdx = dataNota[currentAspek].questions[currentQuestionIndex].correct;
+        if (choice === correctIdx) {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < 10) {
+                loadQuestion();
+            } else {
+                finishQuiz();
+            }
+        } else {
+            document.getElementById('feedback').innerHTML = `<p class="feedback-wrong">Salah! Sila cuba semula soalan ini.</p>`;
+        }
+    }
+
+    function finishQuiz() {
+        document.getElementById('quiz-content').innerHTML = `
+            <div class="congrats">
+                <h2>🎉 TAHNIAH! 🎉</h2>
+                <p>Anda telah menguasai Aspek ${currentAspek} dengan cemerlang.</p>
+                <blockquote style="font-style: italic; color: #555;">
+                    "Kecemerlangan bukanlah satu destinasi, tetapi satu perjalanan. Teruslah menjadi inspirasi kepada anak didik anda!"
+                </blockquote>
+                <button class="btn-quiz" onclick="resetSystem()">Kembali ke Nota</button>
+            </div>
+        `;
+    }
+
+    function resetSystem() {
+        document.getElementById('quiz-display').classList.add('hidden');
+        document.getElementById('navbar').classList.remove('hidden');
+        showSection(currentAspek);
+    }
+
+    function generatePlaceholderQuestions(aspek) {
+        // Fungsi pembantu untuk menjana soalan bagi demo
+        let arr = [];
+        for(let i=1; i<=10; i++) {
+            arr.push({
+                q: `Soalan ${i} berkaitan Aspek ${aspek}: Apakah peranan guru di sini?`,
+                a: ["Jawapan Betul", "Jawapan Salah A", "Jawapan Salah B", "Jawapan Salah C"],
+                correct: 0
+            });
+        }
+        return arr;
+    }
+</script>
+
+</body>
+</html>
