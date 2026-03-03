@@ -11,6 +11,17 @@
         .quiz-transition { transition: all 0.3s ease-in-out; }
         .prose-list li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; }
         .prose-list li::before { content: '•'; position: absolute; left: 0; color: #4f46e5; font-weight: bold; }
+        
+        /* Animation for feedback */
+        .shake-animation {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen">
@@ -32,7 +43,7 @@
     <nav id="main-nav" class="bg-white border-b sticky top-0 z-50 overflow-x-auto">
         <div class="max-w-6xl mx-auto px-4">
             <ul class="flex space-x-2 py-3 whitespace-nowrap">
-                <li><button onclick="loadAspect('4.1')" class="nav-btn bg-indigo-100 text-indigo-700 px-4 py-2 rounded-md font-medium hover:bg-indigo-200 transition">4.1 Perancang</button></li>
+                <li><button onclick="loadAspect('4.1')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.1 Perancang</button></li>
                 <li><button onclick="loadAspect('4.2.1')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.2.1 Pengawal Proses</button></li>
                 <li><button onclick="loadAspect('4.2.2')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.2.2 Pengawal Suasana</button></li>
                 <li><button onclick="loadAspect('4.3')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.3 Pembimbing</button></li>
@@ -95,7 +106,6 @@
     </main>
 
     <script>
-        // Kandungan Detail SKPMg2 Standard 4
         const skpmData = {
             "4.1": {
                 title: "Aspek 4.1: Guru Sebagai Perancang",
@@ -225,7 +235,7 @@
             "4.4.2": {
                 title: "Aspek 4.4.2: Guru Sebagai Pendorong Emosi",
                 description: "Guru memberi sokongan moral dan pujian untuk membina keyakinan diri dan motivasi murid.",
-                standard: "Memberi pujian/galakan terhadap usaha dan hasil kerja murid serta menunjukkan prihatin terhadap keperluan/perasaan murid.",
+                standard: "Memberi pujian/galakan terhadap usaha and hasil kerja murid serta menunjukkan prihatin terhadap keperluan/perasaan murid.",
                 notes: [
                     "<strong>Peneguhan Positif:</strong> Memberi pujian verbal, ganjaran non-verbal (senyuman, bintang), atau hadiah kecil atas usaha murid.",
                     "<strong>Empati & Keprihatinan:</strong> Mengenal pasti murid yang murung atau bermasalah dan memberi kata-kata semangat.",
@@ -252,7 +262,7 @@
                 description: "Guru melaksanakan pentaksiran secara berterusan untuk mengesan tahap penguasaan murid.",
                 standard: "Menggunakan pelbagai kaedah pentaksiran, memberi maklum balas serta menyemak hasil kerja murid berdasarkan objektif pembelajaran.",
                 notes: [
-                    "<strong>Kepelbagaian Kaedah:</strong> Menggunakan pentaksiran lisan (kuiz, soal-jawab), bertulis (latihan, ujian), dan pemerhatian (kemahiran, sikap).",
+                    "<strong>Kepelbagaian Kaedah:</strong> Menggunakan pentaksiran lisan (kuiz, soal-jawab), bertulis (latihan, ujian), and pemerhatian (kemahiran, sikap).",
                     "<strong>Maklum Balas Segera:</strong> Memberi komen yang membina (bukan hanya tanda ✔️) supaya murid tahu kesalahan mereka serta merta.",
                     "<strong>Semakan Hasil Kerja:</strong> Menyemak buku atau tugasan secara tekal dan teliti mengikut kriteria.",
                     "<strong>Pemulihan & Pengayaan:</strong> Menggunakan data penilaian untuk merancang aktiviti susulan (yang belum faham dibantu, yang sudah faham dicabar lagi).",
@@ -264,7 +274,7 @@
                     { q: "Antara kaedah pentaksiran dalam PdP ialah...", o: ["Lisan, Bertulis dan Pemerhatian", "Membaca komik", "Hanya ujian bulanan", "Menonton wayang"], c: 0, d: "Mudah" },
                     { q: "Maklum balas guru perlulah...", o: ["Negatif dan menghina", "Membina untuk penambahbaikan", "Dalam bahasa asing", "Diberi selepas sebulan"], c: 1, d: "Mudah" },
                     { q: "Hasil kerja murid perlu disemak untuk...", o: ["Mengisi masa guru", "Mengesan tahap penguasaan dan kesalahan murid", "Tunjukkan pada pengetua sahaja", "Dibuang selepas habis subjek"], c: 1, d: "Mudah" },
-                    { q: "Aktiviti pengayaan diberikan kepada murid yang...", o: ["Sangat lemah", "Telah mencapai objektif dan perlu cabaran tambahan", "Suka tidur", "Selalu ponteng"], c: 1, d: "Mudah" },
+                    { q: "Aktiviti pemulihan/pengayaan diberikan berdasarkan...", o: ["Markah peperiksaan akhir sahaja", "Data pentaksiran berterusan", "Minat peribadi murid", "Siapa yang paling kacak/jelita"], c: 1, d: "Mudah" },
                     { q: "Apakah beza maklum balas 'evaluatif' dan 'deskriptif'?", o: ["Tiada beza", "Evaluatif hanya beri gred, Deskriptif beri cara baiki jawapan", "Evaluatif lebih baik", "Deskriptif hanya untuk subjek Bahasa"], c: 1, d: "Sederhana" },
                     { q: "Bagaimana guru menjalankan pemulihan dalam PdP?", o: ["Memberi latihan yang sama berulang kali", "Mengubah strategi atau menggunakan bahan lebih mudah bagi murid yang belum faham", "Menghukum murid yang lambat", "Mengeluarkan mereka dari kelas"], c: 1, d: "Sederhana" },
                     { q: "Penilaian rakan (peer assessment) membantu murid untuk...", o: ["Mencari salah kawan", "Membangunkan kemahiran berfikir kritikal dan objektif", "Bercakap-cakap dalam kelas", "Meniru jawapan"], c: 1, d: "Sederhana" },
@@ -318,7 +328,6 @@
             state.currentAspekt = id;
             state.mode = 'note';
             
-            // Update UI Nav
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 if(btn.innerText.includes(id)) {
                     btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-b-2', 'border-indigo-700');
@@ -370,7 +379,6 @@
 
             document.getElementById('note-content').innerHTML = noteHtml;
             document.getElementById('quiz-btn-container').classList.remove('hidden');
-            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -434,13 +442,13 @@
                     }
                 }, 800);
             } else {
-                feedback.innerText = "KURANG TEPAT. Cuba fikirkan semula berdasarkan nota tadi.";
+                feedback.innerText = "KURANG TEPAT. Sila fikirkan semula berdasarkan nota tadi.";
                 feedback.className = "mt-6 p-4 rounded-lg text-center font-bold bg-rose-100 text-rose-800";
                 feedback.classList.remove('hidden');
                 
                 const quizBox = document.querySelector('#quiz-view > div');
-                quizBox.classList.add('animate-bounce');
-                setTimeout(() => quizBox.classList.remove('animate-bounce'), 500);
+                quizBox.classList.add('shake-animation');
+                setTimeout(() => quizBox.classList.remove('shake-animation'), 500);
             }
         }
 
