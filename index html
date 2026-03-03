@@ -3,252 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nota Interaktif SKPMg2 Standard 4</title>
+    <title>Sistem Nota Interaktif SKPM Standard 4 (Edisi Detail)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --success: #27ae60;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #f4f7f6;
-            color: #333;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background: var(--primary);
-            padding: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav button {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-
-        nav button:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        /* Content Area */
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .section-content { display: block; }
-        .quiz-container { display: none; }
-        .hidden { display: none !important; }
-
-        h2 { color: var(--primary); border-bottom: 3px solid var(--secondary); padding-bottom: 10px; }
-        
-        ul { line-height: 1.8; }
-
-        .btn-quiz {
-            display: block;
-            width: 200px;
-            margin: 30px auto 0;
-            padding: 15px;
-            background: var(--accent);
-            color: white;
-            text-align: center;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-        }
-
-        /* Quiz Styles */
-        .question-box {
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .options-btn {
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding: 12px;
-            margin: 8px 0;
-            background: white;
-            border: 1px solid var(--secondary);
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .options-btn:hover { background: #e1f5fe; }
-        
-        .feedback-wrong { color: var(--accent); font-weight: bold; margin-top: 10px; }
-        
-        .congrats {
-            text-align: center;
-            padding: 40px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .quiz-transition { transition: all 0.3s ease-in-out; }
+        .prose-list li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; }
+        .prose-list li::before { content: '•'; position: absolute; left: 0; color: #4f46e5; font-weight: bold; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
 
-<nav id="navbar">
-    <button onclick="showSection('4.1')">4.1 Perancang</button>
-    <button onclick="showSection('4.2.1')">4.2.1 Pengawal Proses</button>
-    <button onclick="showSection('4.2.2')">4.2.2 Pengawal Suasana</button>
-    <button onclick="showSection('4.3')">4.3 Pembimbing</button>
-    <button onclick="showSection('4.4.1')">4.4.1 Pendorong Minda</button>
-    <button onclick="showSection('4.4.2')">4.4.2 Pendorong Emosi</button>
-    <button onclick="showSection('4.5')">4.5 Penilai</button>
-    <button onclick="showSection('4.6')">4.6 Murid Aktif</button>
-</nav>
-
-<div class="container" id="main-container">
-    <div id="nota-display" class="section-content">
-        <div id="content-body">
-            <h2>Selamat Datang ke Sistem Nota SKPMg2 Standard 4</h2>
-            <p>Sila pilih aspek di bar navigasi untuk memulakan sesi pembelajaran anda.</p>
-        </div>
-        <button id="quiz-trigger" class="btn-quiz hidden" onclick="startQuiz()">Mula Kuiz Aspek Ini</button>
-    </div>
-
-    <div id="quiz-display" class="quiz-container">
-        <h2 id="quiz-title">Kuiz</h2>
-        <div id="quiz-content"></div>
-    </div>
-</div>
-
-<script>
-    const dataNota = {
-        '4.1': {
-            title: "4.1: Guru Sebagai Perancang",
-            content: "Guru bertindak sebagai perancang untuk memastikan kesediaan dan persediaan rapi bagi mencapai objektif pembelajaran.<ul><li>Menyediakan RPH yang mengandungi objektif yang boleh diukur.</li><li>Menentukan strategi dan aktiviti yang sesuai.</li><li>Menyediakan sumber pendidikan (BBM) yang relevan.</li></ul>",
-            questions: [
-                {q: "Apakah elemen utama dalam 4.1?", a: ["Rancangan Pelajaran Harian", "Kawalan Kelas", "Motivasi Murid", "Disiplin"], correct: 0, level: "E"},
-                {q: "Guru perlu menyediakan RPH berdasarkan...", a: ["Buku teks sahaja", "Sukatan/DSKP", "Minat peribadi", "Arahan rakan"], correct: 1, level: "E"},
-                {q: "Berapakah elemen utama dalam tindakan guru bagi aspek 4.1?", a: ["2", "3", "4", "5"], correct: 1, level: "E"},
-                {q: "Objektif pembelajaran mestilah bersifat...", a: ["Abstrak", "SMART (Boleh diukur)", "Umum", "Sukar"], correct: 1, level: "E"},
-                {q: "Penyediaan sumber pendidikan dalam 4.1 merujuk kepada...", a: ["BBM/ICT", "Kerusi meja", "Papan tulis", "Buku rekod"], correct: 0, level: "E"},
-                {q: "Bagaimanakah guru merancang peruntukan masa?", a: ["Ikut mood", "Berdasarkan langkah PdP", "Tiada had masa", "Sama untuk semua tajuk"], correct: 1, level: "M"},
-                {q: "Perancangan aktiviti haruslah berpusatkan...", a: ["Guru", "Buku", "Murid", "Peperiksaan"], correct: 2, level: "M"},
-                {q: "Mengapa perancangan persekitaran fizikal tidak masuk dalam 4.1?", a: ["Ia masuk dalam 4.2.2", "Ia tidak penting", "Guru tiada kuasa", "Ia kerja kerani"], correct: 0, level: "M"},
-                {q: "Dalam aspek 4.1, perancangan yang cemerlang mestilah...", a: ["Mengikut tahap keupayaan murid", "Hanya untuk murid pandai", "Hanya satu hala", "Sama setiap tahun"], correct: 0, level: "H"},
-                {q: "Impak perancangan yang lemah akan menyebabkan...", a: ["PdP tidak terarah", "Murid terlalu gembira", "Guru cepat balik", "Bilik darjah bersih"], correct: 0, level: "H"}
-            ]
-        },
-        '4.2.1': { title: "4.2.1: Guru Sebagai Pengawal Proses", content: "Guru mengawal proses pembelajaran dengan mengurus masa, aktiviti, dan penyertaan murid secara berkesan.", questions: generatePlaceholderQuestions("4.2.1") },
-        '4.2.2': { title: "4.2.2: Guru Sebagai Pengawal Suasana", content: "Mengurus persekitaran pembelajaran (fizikal dan psikologi) agar kondusif.", questions: generatePlaceholderQuestions("4.2.2") },
-        '4.3': { title: "4.3: Guru Sebagai Pembimbing", content: "Guru memberi tunjuk ajar dan panduan untuk membantu murid menguasai kemahiran.", questions: generatePlaceholderQuestions("4.3") },
-        '4.4.1': { title: "4.4.1: Guru Sebagai Pendorong Minda", content: "Merangsang pemikiran kritis dan kreatif murid melalui soalan KBAT.", questions: generatePlaceholderQuestions("4.4.1") },
-        '4.4.2': { title: "4.4.2: Guru Sebagai Pendorong Emosi", content: "Memberi pujian dan sokongan moral untuk membina keyakinan diri murid.", questions: generatePlaceholderQuestions("4.4.2") },
-        '4.5': { title: "4.5: Guru Sebagai Penilai", content: "Menggunakan pelbagai kaedah pentaksiran untuk mengukur tahap penguasaan murid.", questions: generatePlaceholderQuestions("4.5") },
-        '4.6': { title: "4.6: Murid Sebagai Pembelajar Aktif", content: "Murid terlibat secara aktif dalam PdP, berkolaborasi, dan berkomunikasi.", questions: generatePlaceholderQuestions("4.6") }
-    };
-
-    let currentAspek = '';
-    let currentQuestionIndex = 0;
-
-    function showSection(id) {
-        currentAspek = id;
-        const data = dataNota[id];
-        document.getElementById('content-body').innerHTML = `<h2>${data.title}</h2><p>${data.content}</p>`;
-        document.getElementById('quiz-trigger').classList.remove('hidden');
-        document.getElementById('nota-display').classList.remove('hidden');
-        document.getElementById('quiz-display').classList.add('hidden');
-        document.getElementById('navbar').classList.remove('hidden');
-    }
-
-    function startQuiz() {
-        document.getElementById('nota-display').classList.add('hidden');
-        document.getElementById('navbar').classList.add('hidden'); // Tutup navigasi semasa kuiz
-        document.getElementById('quiz-display').classList.remove('hidden');
-        currentQuestionIndex = 0;
-        loadQuestion();
-    }
-
-    function loadQuestion() {
-        const questions = dataNota[currentAspek].questions;
-        const qData = questions[currentQuestionIndex];
-        let html = `<h3>Soalan ${currentQuestionIndex + 1} / 10</h3>
-                    <div class="question-box">
-                        <p><strong>${qData.q}</strong></p>`;
-        
-        qData.a.forEach((opt, index) => {
-            html += `<button class="options-btn" onclick="checkAnswer(${index})">${opt}</button>`;
-        });
-        
-        html += `<div id="feedback"></div></div>`;
-        document.getElementById('quiz-content').innerHTML = html;
-    }
-
-    function checkAnswer(choice) {
-        const correctIdx = dataNota[currentAspek].questions[currentQuestionIndex].correct;
-        if (choice === correctIdx) {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < 10) {
-                loadQuestion();
-            } else {
-                finishQuiz();
-            }
-        } else {
-            document.getElementById('feedback').innerHTML = `<p class="feedback-wrong">Salah! Sila cuba semula soalan ini.</p>`;
-        }
-    }
-
-    function finishQuiz() {
-        document.getElementById('quiz-content').innerHTML = `
-            <div class="congrats">
-                <h2>🎉 TAHNIAH! 🎉</h2>
-                <p>Anda telah menguasai Aspek ${currentAspek} dengan cemerlang.</p>
-                <blockquote style="font-style: italic; color: #555;">
-                    "Kecemerlangan bukanlah satu destinasi, tetapi satu perjalanan. Teruslah menjadi inspirasi kepada anak didik anda!"
-                </blockquote>
-                <button class="btn-quiz" onclick="resetSystem()">Kembali ke Nota</button>
+    <!-- Header -->
+    <header class="bg-indigo-800 text-white p-6 shadow-lg">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold italic">SKPMg2 Standard 4</h1>
+                <p class="text-indigo-100 opacity-90 text-sm">Panduan Lengkap & Strategi Skor Cemerlang</p>
             </div>
-        `;
-    }
+            <div id="quiz-status" class="hidden mt-4 md:mt-0 bg-indigo-700 px-4 py-2 rounded-full border border-indigo-500">
+                Mod Kuiz: <span id="current-quiz-label" class="font-bold"></span>
+            </div>
+        </div>
+    </header>
 
-    function resetSystem() {
-        document.getElementById('quiz-display').classList.add('hidden');
-        document.getElementById('navbar').classList.remove('hidden');
-        showSection(currentAspek);
-    }
+    <!-- Navigasi -->
+    <nav id="main-nav" class="bg-white border-b sticky top-0 z-50 overflow-x-auto">
+        <div class="max-w-6xl mx-auto px-4">
+            <ul class="flex space-x-2 py-3 whitespace-nowrap">
+                <li><button onclick="loadAspect('4.1')" class="nav-btn bg-indigo-100 text-indigo-700 px-4 py-2 rounded-md font-medium hover:bg-indigo-200 transition">4.1 Perancang</button></li>
+                <li><button onclick="loadAspect('4.2.1')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.2.1 Pengawal Proses</button></li>
+                <li><button onclick="loadAspect('4.2.2')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.2.2 Pengawal Suasana</button></li>
+                <li><button onclick="loadAspect('4.3')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.3 Pembimbing</button></li>
+                <li><button onclick="loadAspect('4.4.1')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.4.1 Pendorong Minda</button></li>
+                <li><button onclick="loadAspect('4.4.2')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.4.2 Pendorong Emosi</button></li>
+                <li><button onclick="loadAspect('4.5')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.5 Penilai</button></li>
+                <li><button onclick="loadAspect('4.6')" class="nav-btn px-4 py-2 rounded-md font-medium hover:bg-slate-100 transition">4.6 Murid Aktif</button></li>
+            </ul>
+        </div>
+    </nav>
 
-    function generatePlaceholderQuestions(aspek) {
-        // Fungsi pembantu untuk menjana soalan bagi demo
-        let arr = [];
-        for(let i=1; i<=10; i++) {
-            arr.push({
-                q: `Soalan ${i} berkaitan Aspek ${aspek}: Apakah peranan guru di sini?`,
-                a: ["Jawapan Betul", "Jawapan Salah A", "Jawapan Salah B", "Jawapan Salah C"],
-                correct: 0
+    <main class="max-w-5xl mx-auto p-6">
+        <!-- Paparan Nota -->
+        <div id="note-view" class="bg-white rounded-xl shadow-md p-8 min-h-[500px]">
+            <div id="note-content">
+                <div class="text-center py-20">
+                    <svg class="w-20 h-20 mx-auto text-indigo-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <h2 class="text-2xl font-bold text-slate-700">Modul Pembelajaran SKPMg2</h2>
+                    <p class="text-slate-500 mt-2">Pilih mana-mana aspek di atas untuk memaparkan panduan spesifik tindakan guru.</p>
+                </div>
+            </div>
+            
+            <div id="quiz-btn-container" class="hidden mt-12 border-t pt-8 text-center">
+                <p class="text-slate-500 mb-4 text-sm font-medium italic">Sedia untuk menguji kefahaman anda?</p>
+                <button onclick="startQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform transition hover:scale-105">
+                    Mula Kuiz Aspek Ini
+                </button>
+            </div>
+        </div>
+
+        <!-- Paparan Kuiz -->
+        <div id="quiz-view" class="hidden">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-slate-200">
+                <div class="bg-slate-800 text-white px-6 py-4 flex justify-between items-center">
+                    <span id="question-number" class="font-bold">Soalan 1 / 10</span>
+                    <span id="difficulty-badge" class="px-3 py-1 bg-blue-500 text-xs rounded-full uppercase font-bold">Mudah</span>
+                </div>
+                
+                <div class="p-8">
+                    <h3 id="question-text" class="text-xl font-semibold mb-6 text-slate-800 leading-relaxed"></h3>
+                    <div id="options-container" class="space-y-3">
+                        <!-- Options injected here -->
+                    </div>
+                    
+                    <div id="feedback-message" class="mt-6 p-4 rounded-lg hidden text-center font-bold"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paparan Tahniah -->
+        <div id="congrats-view" class="hidden text-center py-20 bg-white rounded-xl shadow-md p-8 border-2 border-emerald-500">
+            <div class="text-7xl mb-6">🏆</div>
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">Luar Biasa!</h2>
+            <p class="text-emerald-600 font-bold mb-6">Anda telah berjaya menjawab semua soalan dengan betul.</p>
+            <div class="max-w-md mx-auto bg-slate-50 p-6 rounded-lg mb-8 italic text-slate-600 border">
+                <p id="motivational-quote"></p>
+            </div>
+            <button onclick="exitQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-8 rounded-lg font-bold shadow-md transition">Kembali ke Nota</button>
+        </div>
+    </main>
+
+    <script>
+        // Kandungan Detail SKPMg2 Standard 4
+        const skpmData = {
+            "4.1": {
+                title: "Aspek 4.1: Guru Sebagai Perancang",
+                description: "Guru bertindak sebagai perancang untuk memastikan kesediaan dan persediaan rapi bagi mencapai objektif pembelajaran (OP).",
+                standard: "Rancangan Pelajaran Harian (RPH) disediakan berdasarkan DSKP, objektif yang boleh diukur dan aktiviti yang sesuai mengikut kepelbagaian murid.",
+                notes: [
+                    "<strong>Penyediaan RPH:</strong> RPH mestilah lengkap mengandungi tajuk, objektif, aktiviti, dan refleksi. Objektif perlu bersifat SMART (Specific, Measurable, Attainable, Relevant, Time-bound).",
+                    "<strong>Pemilihan Strategi:</strong> Strategi PdP haruslah selari dengan tahap keupayaan murid (pembezaan), merangkumi pelbagai aras pemikiran (LOTS ke HOTS).",
+                    "<strong>Sumber Pendidikan:</strong> Menyediakan BBM (Bahan Bantu Mengajar) yang relevan, mencukupi, dan berfungsi (termasuk ICT/Teknologi).",
+                    "<strong>Pengurusan Masa:</strong> Merancang agihan masa mengikut langkah pengajaran (Induksi, Perkembangan, Penutup) secara realistik.",
+                    "<strong>Integrasi EMK:</strong> Memasukkan Elemen Merentas Kurikulum (seperti kreativiti, nilai murni, kelestarian) dalam perancangan."
+                ],
+                skor4: "Menyediakan RPH yang mengandungi objektif yang boleh diukur dan aktiviti pembelajaran yang sesuai, menentukan kaedah pentaksiran dalam PdP serta menyediakan sumber pendidikan mengikut keupayaan murid, peruntukan masa dan mematuhi ketetapan kurikulum.",
+                questions: [
+                    { q: "Manakah ciri objektif pembelajaran (OP) yang menepati kriteria skor cemerlang?", o: ["Am dan umum", "Sukar dicapai untuk mencabar murid", "Boleh diukur dan mengikut ketetapan kurikulum", "Hanya fokus pada murid pandai"], c: 2, d: "Mudah" },
+                    { q: "Dalam 4.1, perancangan aktiviti perlu mengambil kira...", o: ["Keselesaan guru sahaja", "Kepelbagaian tahap keupayaan murid", "Bilangan buku latihan", "Cuaca hari tersebut"], c: 1, d: "Mudah" },
+                    { q: "Sumber pendidikan dalam perancangan merujuk kepada...", o: ["Buku teks sahaja", "Alatan sukan sahaja", "BBM yang relevan dan mencukupi", "Papan putih semata-mata"], c: 2, d: "Mudah" },
+                    { q: "Strategi PdP yang dirancang dalam RPH haruslah...", o: ["Sama untuk semua kelas", "Berpusatkan guru sepenuhnya", "Mengambil kira perbezaan individu (differentiated learning)", "Hanya menggunakan kaedah kuliah"], c: 2, d: "Mudah" },
+                    { q: "Kenapa refleksi perlu dirancang (di ruang RPH)?", o: ["Syarat pentadbiran sahaja", "Untuk menilai keberkesanan PdP dan OP", "Supaya nampak penuh", "Sebagai hiasan"], c: 1, d: "Mudah" },
+                    { q: "Manakah tindakan 'skor 4' bagi penyediaan sumber pendidikan?", o: ["Menyediakan satu set BBM untuk satu kelas", "Menyediakan sumber yang mencukupi dan sesuai dengan tahap murid", "Menggunakan buku teks sepanjang masa", "Meminta murid membawa sendiri semua bahan"], c: 1, d: "Sederhana" },
+                    { q: "Integrasi Elemen Merentas Kurikulum (EMK) dalam perancangan menunjukkan guru...", o: ["Kurang fokus pada subjek utama", "Mempunyai kreativiti dan meluaskan skop ilmu murid", "Terlalu mengikut buku", "Suka membazir masa"], c: 1, d: "Sederhana" },
+                    { q: "Perancangan masa dalam RPH yang efektif adalah...", o: ["5 minit induksi, 50 minit penutup", "Agihan masa yang fleksibel mengikut langkah PdP", "Tiada had masa ditetapkan", "Masa yang sama setiap hari"], c: 1, d: "Sederhana" },
+                    { q: "Kesan kegagalan merancang kaedah pentaksiran dalam RPH ialah...", o: ["Guru tidak tahu tahap pencapaian murid dalam PdP tersebut", "Kelas jadi sangat bising", "Murid tidak hadir kelas", "Buku teks cepat rosak"], c: 0, d: "Sukar" },
+                    { q: "Perancangan PdP yang mengambil kira 'Mastery Learning' bermaksud guru merancang...", o: ["Supaya semua murid lulus peperiksaan", "Aktiviti pemulihan dan pengayaan", "Latihan yang paling susah", "Hanya satu aktiviti untuk semua"], c: 1, d: "Sukar" }
+                ]
+            },
+            "4.2.1": {
+                title: "Aspek 4.2.1: Guru Sebagai Pengawal Proses",
+                description: "Guru mengawal proses pembelajaran dengan mengurus masa, aktiviti, dan penyertaan murid secara berkesan.",
+                standard: "Menguruskan waktu pembelajaran selaras dengan aktiviti serta memastikan penyertaan murid yang aktif bagi mencapai objektif.",
+                notes: [
+                    "<strong>Pengurusan Masa (Time on Task):</strong> Memastikan murid sentiasa terlibat dengan tugasan bermakna sepanjang waktu PdP.",
+                    "<strong>Kelancaran Aliran:</strong> Mengurus peralihan antara satu aktiviti ke aktiviti seterusnya dengan lancar (minimal transitions).",
+                    "<strong>Pengawalan Hasil Kerja:</strong> Memastikan murid menyiapkan tugasan dalam masa yang ditetapkan dan memantau kualiti kerja.",
+                    "<strong>Pelibatan Menyeluruh:</strong> Memastikan semua murid (bukan hanya yang pandai) terlibat aktif dalam aktiviti.",
+                    "<strong>Penyusunan Aktiviti:</strong> Mengawal turutan aktiviti supaya berkembang mengikut logik (mudah ke sukar)."
+                ],
+                skor4: "Mengurus masa PdP selaras dengan aktiviti pembelajaran, mengawal hasil kerja murid bagi mencapai objektif pembelajaran mengikut ketetapan, arahan dan secara menyeluruh.",
+                questions: [
+                    { q: "Apakah yang dimaksudkan dengan 'Time on Task'?", o: ["Masa guru berehat", "Masa murid fokus pada tugasan pembelajaran", "Masa untuk mengutip yuran", "Masa pertukaran kelas"], c: 1, d: "Mudah" },
+                    { q: "Siapa yang perlu dipastikan terlibat secara aktif dalam 4.2.1?", o: ["Murid yang rajin sahaja", "Murid barisan hadapan", "Kesemua murid secara menyeluruh", "Hanya ketua kumpulan"], c: 2, d: "Mudah" },
+                    { q: "Bagaimana guru mengawal hasil kerja murid?", o: ["Membiarkan murid buat sendiri", "Memantau kemajuan dan menyemak kualiti tugasan", "Mengutip buku di akhir tahun sahaja", "Menyuruh murid menyemak sendiri tanpa panduan"], c: 1, d: "Mudah" },
+                    { q: "Tindakan guru mengawal aliran PdP bertujuan untuk...", o: ["Menghabiskan masa", "Kelancaran aktiviti dan mencapai objektif", "Supaya guru boleh duduk", "Mengikut arahan pengetua sahaja"], c: 1, d: "Mudah" },
+                    { q: "Manakah contoh pengawalan proses yang lemah?", o: ["Memberi arahan jelas", "Membiarkan murid tanpa aktiviti bermakna (free time)", "Berjalan mengelilingi kelas", "Membimbing murid lemah"], c: 1, d: "Mudah" },
+                    { q: "Penyusunan aktiviti secara logik bermaksud...", o: ["Mula dengan ujian akhir terus", "Mula dari konsep mudah ke sukar", "Ikut suka hati guru", "Guna bahan yang paling susah dahulu"], c: 1, d: "Sederhana" },
+                    { q: "Bagaimana guru mengurus masa jika aktiviti perbincangan terlalu lama?", o: ["Tamatkan terus dengan marah", "Memberi isyarat masa dan membimbing ke arah kesimpulan", "Biarkan sehingga tamat waktu", "Keluar dari kelas"], c: 1, d: "Sederhana" },
+                    { q: "Pengawalan proses pembelajaran yang cemerlang mestilah...", o: ["Kaku dan tidak boleh diubah", "Fleksibel mengikut respon dan keperluan murid", "Hanya mengikut buku teks 100%", "Tiada sebarang kawalan"], c: 1, d: "Sederhana" },
+                    { q: "Mengapa kawalan hasil kerja perlu dibuat secara 'menyeluruh'?", o: ["Untuk memastikan tiada murid ketinggalan", "Supaya markah murid sama semua", "Syarat untuk naik pangkat", "Untuk memuaskan hati murid"], c: 0, d: "Sukar" },
+                    { q: "Impak utama pengawalan proses yang berkesan ialah...", o: ["Kelas menjadi sangat sunyi", "Objektif pembelajaran tercapai dengan optima", "Buku latihan habis cepat", "Guru tidak perlu bercakap"], c: 1, d: "Sukar" }
+                ]
+            },
+            "4.2.2": {
+                title: "Aspek 4.2.2: Guru Sebagai Pengawal Suasana",
+                description: "Guru mengurus persekitaran pembelajaran untuk mewujudkan suasana yang kondusif, menyeronokkan, dan membina keyakinan diri murid.",
+                standard: "Mengurus suasana pembelajaran yang kondusif merangkumi aspek fizikal, emosi, dan sosial.",
+                notes: [
+                    "<strong>Susunan Fizikal (PAK21):</strong> Susunan kerusi meja yang memudahkan kolaborasi, komunikasi, dan pergerakan (contoh: susunan kumpulan).",
+                    "<strong>Kebersihan & Keselamatan:</strong> Memastikan bilik darjah bersih, ceria, dan selamat untuk aktiviti fizikal.",
+                    "<strong>Suasana Positif:</strong> Mewujudkan hubungan mesra antara guru-murid dan murid-murid (rapport).",
+                    "<strong>Kawalan Disiplin Positif:</strong> Menangani gangguan disiplin secara berhemah tanpa merosakkan emosi murid.",
+                    "<strong>Keyakinan Diri:</strong> Memberi ruang kepada murid untuk merasa selamat membuat silap dan bertanya."
+                ],
+                skor4: "Mengurus susunan kerusi meja murid sesuai dengan aktiviti pembelajaran serta memastikan kebersihan, keceriaan dan keselamatan bilik darjah mengikut kesesuaian dan keperluan.",
+                questions: [
+                    { q: "Susunan bilik darjah PAK21 menggalakkan...", o: ["Murid tidur", "Kolaborasi dan komunikasi", "Guru bercakap sahaja", "Murid duduk secara individu selamanya"], c: 1, d: "Mudah" },
+                    { q: "Kebersihan kelas dalam 4.2.2 adalah untuk...", o: ["Pertandingan keceriaan", "Mewujudkan suasana belajar yang kondusif", "Hiasan sahaja", "Mengikut arahan pekerja pembersihan"], c: 1, d: "Mudah" },
+                    { q: "Siapa yang bertanggungjawab menjaga suasana positif di kelas?", o: ["Ketua kelas sahaja", "Guru dan semua murid", "Guru besar", "Ibu bapa"], c: 1, d: "Mudah" },
+                    { q: "Manakah tindakan mengawal suasana emosi yang betul?", o: ["Menghina murid yang lambat", "Memberi senyuman dan galakan", "Sentiasa menjerit", "Abaikan perasaan murid"], c: 1, d: "Mudah" },
+                    { q: "Keselamatan di dalam bilik darjah merujuk kepada...", o: ["Tiada pencuri", "Alatan PdP tidak membahayakan murid", "Pagar sekolah dikunci", "Murid memakai topi keledar"], c: 1, d: "Mudah" },
+                    { q: "Bagaimana susunan fizikal mempengaruhi kualiti PdP?", o: ["Tiada kaitan", "Memudahkan guru memantau dan murid berbincang", "Hanya untuk kecantikan", "Menambah beban guru"], c: 1, d: "Sederhana" },
+                    { q: "Suasana yang 'menyeronokkan' dalam SKPMg2 bermaksud...", o: ["Bermain sepanjang masa tanpa ilmu", "PdP yang menarik minat dan aktif", "Menonton filem tanpa kaitan subjek", "Guru menceritakan lawak sahaja"], c: 1, d: "Sederhana" },
+                    { q: "Disiplin positif diamalkan dengan cara...", o: ["Hukuman rotan serta merta", "Teguran membina dan peraturan kelas yang jelas", "Membiarkan kesalahan murid", "Mengeluarkan murid dari kelas"], c: 1, d: "Sederhana" },
+                    { q: "Kesan suasana kelas yang 'tegang' (stressful) ialah...", o: ["Murid lebih cepat faham", "Menghalang proses kognitif dan kreativiti murid", "Disiplin akan jadi lebih baik", "Objektif tercapai"], c: 1, d: "Sukar" },
+                    { q: "Guru bertindak sebagai pengawal suasana yang cemerlang apabila murid...", o: ["Takut untuk bercakap", "Merasa dihargai, selamat, dan bermotivasi untuk belajar", "Hanya mendengar arahan tanpa bantahan", "Sentiasa meminta ke tandas"], c: 1, d: "Sukar" }
+                ]
+            },
+            "4.3": {
+                title: "Aspek 4.3: Guru Sebagai Pembimbing",
+                description: "Guru memberi tunjuk ajar dan panduan untuk membantu murid menguasai kemahiran dan isi pelajaran.",
+                standard: "Memberi tunjuk ajar/panduan dan panduan menguasai isi pelajaran/kemahiran serta memandu murid membuat keputusan/menyelesaikan masalah.",
+                notes: [
+                    "<strong>Bimbingan Konsep:</strong> Membantu murid memahami konsep yang sukar melalui analogi, contoh, atau demonstrasi.",
+                    "<strong>Scaffolding:</strong> Memberi bantuan sokongan pada peringkat awal dan mengurangkannya apabila murid mula menguasai.",
+                    "<strong>Penyelesaian Masalah:</strong> Tidak memberi jawapan terus, sebaliknya memandu murid berfikir untuk mencari solusi.",
+                    "<strong>Bimbingan Individu/Kumpulan:</strong> Memberi perhatian khusus kepada murid yang lemah (remedial) dan mencabar murid yang cerdas.",
+                    "<strong>Penggunaan Alatan:</strong> Membimbing murid menggunakan BBM/peralatan secara betul dan berkesan."
+                ],
+                skor4: "Memberi tunjuk ajar menguasai isi pelajaran/kemahiran, memandu murid membuat keputusan dan menyelesaikan masalah serta menggunakan sumber pendidikan mengikut keperluan dan keupayaan murid.",
+                questions: [
+                    { q: "Apakah peranan utama guru sebagai pembimbing?", o: ["Memberi jawapan terus", "Memberi tunjuk ajar dan panduan", "Mendikte nota", "Mengawasi peperiksaan sahaja"], c: 1, d: "Mudah" },
+                    { q: "Apabila murid buntu, pembimbing yang baik akan...", o: ["Memberi jawapan", "Memberi klu atau soalan pancingan", "Marah kerana lambat", "Suruh kawan buatkan"], c: 1, d: "Mudah" },
+                    { q: "Bimbingan perlu diberikan mengikut...", o: ["Mood guru", "Keupayaan dan keperluan murid", "Abjad nama murid", "Siapa yang paling kaya"], c: 1, d: "Mudah" },
+                    { q: "Membimbing murid membuat keputusan bermaksud...", o: ["Guru buat keputusan bagi pihak murid", "Mengajar murid menimbang pilihan dan kesan", "Tiada pilihan diberikan", "Murid buat ikut suka tanpa panduan"], c: 1, d: "Mudah" },
+                    { q: "Demonstrasi cara menggunakan mikroskop adalah contoh...", o: ["Pendorong emosi", "Bimbingan kemahiran/penggunaan sumber", "Penilaian", "Perancangan"], c: 1, d: "Mudah" },
+                    { q: "Istilah 'Scaffolding' dalam aspek 4.3 merujuk kepada...", o: ["Bahan binaan bangunan", "Sokongan pembelajaran yang dikurangkan secara berperingkat", "Denda kepada murid", "Ujian bertulis mingguan"], c: 1, d: "Sederhana" },
+                    { q: "Bagaimana guru membimbing murid yang sangat lemah?", o: ["Suruh mereka baca sendiri", "Memberi bimbingan individu atau aktiviti pemulihan", "Abaikan dan fokus pada yang pandai", "Suruh mereka keluar kelas"], c: 1, d: "Sederhana" },
+                    { q: "Pembimbing yang cemerlang menggunakan bahasa yang...", o: ["Sangat teknikal dan sukar", "Mudah difahami dan jelas", "Kasar dan menakutkan", "Hanya bahasa isyarat"], c: 1, d: "Sederhana" },
+                    { q: "Kesan jika bimbingan guru terlalu 'menyuap' (spoon-feeding) ialah...", o: ["Murid jadi sangat kreatif", "Murid menjadi pasif dan tidak berdikari", "Objektif tercapai dengan lebih baik", "Guru jadi lebih rajin"], c: 1, d: "Sukar" },
+                    { q: "Bimbingan yang berkesan seharusnya...", o: ["Hanya berlaku di awal PdP", "Berlaku secara berterusan sepanjang proses PdP", "Hanya untuk murid yang bertanya", "Dibuat dalam bentuk ceramah 1 hala"], c: 1, d: "Sukar" }
+                ]
+            },
+            "4.4.1": {
+                title: "Aspek 4.4.1: Guru Sebagai Pendorong Minda",
+                description: "Guru merangsang pemikiran murid melalui teknik penyoalan dan aktiviti yang mencabar minda.",
+                standard: "Merangsang murid berkomunikasi dan berkolaborasi serta mengemukakan soalan yang menjurus ke arah pemikiran kritis dan kreatif.",
+                notes: [
+                    "<strong>Teknik Penyoalan:</strong> Menggunakan soalan pelbagai aras (Bloom) terutama soalan mencapah (KBAT).",
+                    "<strong>Komunikasi & Kolaborasi:</strong> Mewujudkan aktiviti perbincangan, pembentangan, dan kerja berkumpulan.",
+                    "<strong>Penerokaan (Inkuiri):</strong> Memberi peluang murid mencari maklumat sendiri melalui eksperimen atau projek.",
+                    "<strong>Idea Kreatif:</strong> Memberi respon dan menghargai idea luar biasa atau kreatif daripada murid.",
+                    "<strong>Kemahiran Berfikir:</strong> Menggunakan alat berfikir (I-Think, peta minda, peta konsep)."
+                ],
+                skor4: "Merangsang murid berkomunikasi dan berkolaborasi dalam aktiviti pembelajaran, mengemukakan soalan yang menjurus ke arah pemikiran kritis dan kreatif serta mewujudkan peluang untuk murid membuat penerokaan mengikut keupayaan murid secara menyeluruh.",
+                questions: [
+                    { q: "Soalan yang mendorong minda biasanya bermula dengan perkataan...", o: ["Siapakah/Bilakah", "Mengapakah/Bagaimanakah", "Adakah/Berapakah", "Di manakah"], c: 1, d: "Mudah" },
+                    { q: "KBAT merujuk kepada...", o: ["Kemahiran Belajar Amalan Terbaik", "Kemahiran Berfikir Aras Tinggi", "Koleksi Bahan Alat Tulis", "Kemahiran Bermain Alatan Tradisional"], c: 1, d: "Mudah" },
+                    { q: "Guru menggalakkan kolaborasi melalui...", o: ["Kerja individu", "Kerja berkumpulan/pasukan", "Diam di tempat duduk", "Mendengar syarahan"], c: 1, d: "Mudah" },
+                    { q: "Penerokaan (exploration) murid bermaksud...", o: ["Murid berjalan di padang", "Murid mencari maklumat atau jawapan melalui inkuiri", "Guru memberi nota lengkap", "Menyalin dari buku teks"], c: 1, d: "Mudah" },
+                    { q: "Contoh alat berfikir yang popular dalam sekolah Malaysia ialah...", o: ["Peta I-Think", "Buku teks", "Pembaris", "Kapur tulis"], c: 0, d: "Mudah" },
+                    { q: "Mengapa komunikasi dua hala penting dalam aspek 4.4.1?", o: ["Supaya guru tidak letih", "Untuk merangsang pertukaran idea dan pemikiran murid", "Hanya sebagai syarat mengajar", "Untuk membuat bising"], c: 1, d: "Sederhana" },
+                    { q: "Bagaimana guru mendorong murid yang diam dalam kumpulan?", o: ["Abaikan mereka", "Memberi peranan spesifik atau soalan rangsangan", "Marah mereka", "Tukarkan ke kelas lain"], c: 1, d: "Sederhana" },
+                    { q: "Soalan mencapah (open-ended) penting kerana...", o: ["Mempunyai hanya satu jawapan betul", "Mempunyai pelbagai kemungkinan jawapan dan merangsang imaginasi", "Senang untuk diperiksa", "Boleh dijawab dengan 'Ya' atau 'Tidak'"], c: 1, d: "Sederhana" },
+                    { q: "Tindakan guru yang menghargai idea salah murid dengan membetulkannya secara positif menunjukkan...", o: ["Guru pendorong minda dan emosi yang baik", "Guru yang tidak tahu jawapan", "Guru yang membazir masa", "Guru yang lemah"], c: 0, d: "Sukar" },
+                    { q: "Pendorong minda yang berkesan menghasilkan murid yang...", o: ["Hafal semua fakta", "Berupaya menganalisis dan menilai maklumat secara kritis", "Hanya mendengar arahan", "Cekap menyalin nota"], c: 1, d: "Sukar" }
+                ]
+            },
+            "4.4.2": {
+                title: "Aspek 4.4.2: Guru Sebagai Pendorong Emosi",
+                description: "Guru memberi sokongan moral dan pujian untuk membina keyakinan diri dan motivasi murid.",
+                standard: "Memberi pujian/galakan terhadap usaha dan hasil kerja murid serta menunjukkan prihatin terhadap keperluan/perasaan murid.",
+                notes: [
+                    "<strong>Peneguhan Positif:</strong> Memberi pujian verbal, ganjaran non-verbal (senyuman, bintang), atau hadiah kecil atas usaha murid.",
+                    "<strong>Empati & Keprihatinan:</strong> Mengenal pasti murid yang murung atau bermasalah dan memberi kata-kata semangat.",
+                    "<strong>Keyakinan Diri:</strong> Membimbing murid untuk berani tampil ke hadapan tanpa rasa takut diketawakan.",
+                    "<strong>Mendengar Aktif:</strong> Memberi perhatian penuh apabila murid bercakap atau menyatakan pandangan.",
+                    "<strong>Sikap Adil:</strong> Memberi galakan kepada semua murid tanpa pilih kasih (inclusivity)."
+                ],
+                skor4: "Memberi pujian/galakan terhadap usaha dan hasil kerja murid, memberi keyakinan dalam mengemukakan soalan/memberi respon serta menunjukkan prihatin terhadap keperluan murid secara berhemah, menyeluruh dan berterusan.",
+                questions: [
+                    { q: "Mengapa pujian penting dalam PdP?", o: ["Untuk membazir masa", "Meningkatkan motivasi dan harga diri murid", "Supaya murid puji guru balik", "Syarat untuk lulus SKPM"], c: 1, d: "Mudah" },
+                    { q: "Guru menunjukkan prihatin dengan cara...", o: ["Mengabaikan murid yang sedih", "Bertanya khabar dan memberi sokongan moral", "Memberi kerja sekolah yang banyak", "Menghantar ke bilik disiplin"], c: 1, d: "Mudah" },
+                    { q: "Sikap adil dalam memberi galakan bermaksud...", o: ["Hanya puji murid pandai", "Hanya puji murid yang kita suka", "Memberi galakan kepada semua murid tanpa mengira tahap", "Tidak puji sesiapa pun"], c: 2, d: "Mudah" },
+                    { q: "Bagaimana guru membina keyakinan murid untuk bertanya?", o: ["Wujudkan suasana selamat di mana salah itu tidak dihukum", "Ketawakan jawapan yang salah", "Jangan beri peluang bertanya", "Paksa mereka berdiri sehingga tahu"], c: 0, d: "Mudah" },
+                    { q: "Contoh peneguhan positif non-verbal ialah...", o: ["Menjerit 'Syabas'", "Memberi isyarat bagus (thumbs up) atau senyuman", "Menulis nota panjang", "Mendiamkan diri"], c: 1, d: "Mudah" },
+                    { q: "Pendorong emosi perlu dilakukan secara...", o: ["Sekali-sekala", "Berterusan sepanjang sesi PdP", "Hanya di akhir kelas", "Hanya waktu perhimpunan"], c: 1, d: "Sederhana" },
+                    { q: "Maksud 'berhemah' dalam aspek 4.4.2 ialah...", o: ["Memberi pujian secara berlebihan", "Memberi teguran atau pujian dengan bahasa yang sopan dan menjaga maruah", "Memberi wang kepada murid", "Bersikap garang"], c: 1, d: "Sederhana" },
+                    { q: "Bagaimana guru menangani murid yang merasa rendah diri?", o: ["Bandingkan dengan rakan yang lebih hebat", "Fokus pada kekuatan mereka dan beri tanggungjawab kecil", "Biarkan mereka duduk di belakang", "Suruh mereka belajar sendiri"], c: 1, d: "Sederhana" },
+                    { q: "Kesan jangka panjang pendorong emosi yang baik ialah...", o: ["Murid jadi manja", "Terbentuknya 'Growth Mindset' dan minat belajar yang tinggi", "Murid tidak takut lagi pada guru", "Markah ujian automatik 100% tanpa belajar"], c: 1, d: "Sukar" },
+                    { q: "Kegagalan guru dalam aspek 4.4.2 boleh menyebabkan murid...", o: ["Menjadi terlalu berani", "Hilang minat belajar dan rasa tertekan (anxiety) di dalam kelas", "Sentiasa ingin datang ke sekolah", "Menghormati guru secara ikhlas"], c: 1, d: "Sukar" }
+                ]
+            },
+            "4.5": {
+                title: "Aspek 4.5: Guru Sebagai Penilai",
+                description: "Guru melaksanakan pentaksiran secara berterusan untuk mengesan tahap penguasaan murid.",
+                standard: "Menggunakan pelbagai kaedah pentaksiran, memberi maklum balas serta menyemak hasil kerja murid berdasarkan objektif pembelajaran.",
+                notes: [
+                    "<strong>Kepelbagaian Kaedah:</strong> Menggunakan pentaksiran lisan (kuiz, soal-jawab), bertulis (latihan, ujian), dan pemerhatian (kemahiran, sikap).",
+                    "<strong>Maklum Balas Segera:</strong> Memberi komen yang membina (bukan hanya tanda ✔️) supaya murid tahu kesalahan mereka serta merta.",
+                    "<strong>Semakan Hasil Kerja:</strong> Menyemak buku atau tugasan secara tekal dan teliti mengikut kriteria.",
+                    "<strong>Pemulihan & Pengayaan:</strong> Menggunakan data penilaian untuk merancang aktiviti susulan (yang belum faham dibantu, yang sudah faham dicabar lagi).",
+                    "<strong>Penilaian Kendiri/Rakan:</strong> Melibatkan murid dalam menilai kerja sendiri atau rakan (self/peer assessment)."
+                ],
+                skor4: "Menggunakan pelbagai kaedah pentaksiran dalam PdP, memberi maklum balas bagi pembetulan/penambahbaikan segera, menyemak hasil kerja murid serta menjalankan aktiviti pemulihan/pengayaan mengikut keperluan, secara menyeluruh dan berterusan.",
+                questions: [
+                    { q: "Pentaksiran Bilik Darjah (PBD) dalam aspek 4.5 perlu dilakukan secara...", o: ["Sekali setahun", "Berterusan sepanjang PdP", "Hanya waktu peperiksaan", "Jika ada pemantauan sahaja"], c: 1, d: "Mudah" },
+                    { q: "Antara kaedah pentaksiran dalam PdP ialah...", o: ["Lisan, Bertulis dan Pemerhatian", "Membaca komik", "Hanya ujian bulanan", "Menonton wayang"], c: 0, d: "Mudah" },
+                    { q: "Maklum balas guru perlulah...", o: ["Negatif dan menghina", "Membina untuk penambahbaikan", "Dalam bahasa asing", "Diberi selepas sebulan"], c: 1, d: "Mudah" },
+                    { q: "Hasil kerja murid perlu disemak untuk...", o: ["Mengisi masa guru", "Mengesan tahap penguasaan dan kesalahan murid", "Tunjukkan pada pengetua sahaja", "Dibuang selepas habis subjek"], c: 1, d: "Mudah" },
+                    { q: "Aktiviti pengayaan diberikan kepada murid yang...", o: ["Sangat lemah", "Telah mencapai objektif dan perlu cabaran tambahan", "Suka tidur", "Selalu ponteng"], c: 1, d: "Mudah" },
+                    { q: "Apakah beza maklum balas 'evaluatif' dan 'deskriptif'?", o: ["Tiada beza", "Evaluatif hanya beri gred, Deskriptif beri cara baiki jawapan", "Evaluatif lebih baik", "Deskriptif hanya untuk subjek Bahasa"], c: 1, d: "Sederhana" },
+                    { q: "Bagaimana guru menjalankan pemulihan dalam PdP?", o: ["Memberi latihan yang sama berulang kali", "Mengubah strategi atau menggunakan bahan lebih mudah bagi murid yang belum faham", "Menghukum murid yang lambat", "Mengeluarkan mereka dari kelas"], c: 1, d: "Sederhana" },
+                    { q: "Penilaian rakan (peer assessment) membantu murid untuk...", o: ["Mencari salah kawan", "Membangunkan kemahiran berfikir kritikal dan objektif", "Bercakap-cakap dalam kelas", "Meniru jawapan"], c: 1, d: "Sederhana" },
+                    { q: "Penggunaan 'Exit Ticket' di akhir kelas adalah contoh pentaksiran...", o: ["Formatif (untuk penambahbaikan)", "Sumatif (untuk gred akhir)", "Diagnostik (untuk sakit)", "Tiada kaitan"], c: 0, d: "Sukar" },
+                    { q: "Data pentaksiran dalam 4.5 seharusnya digunakan oleh guru untuk...", o: ["Mencari kesalahan murid", "Merancang tindakan susulan dan modifikasi PdP akan datang", "Melabel murid pandai dan bodoh", "Menunjuk-nunjuk kepada rakan sejawat"], c: 1, d: "Sukar" }
+                ]
+            },
+            "4.6": {
+                title: "Aspek 4.6: Murid Sebagai Pembelajar Aktif",
+                description: "Murid terlibat secara aktif dalam pembelajaran, berkolaborasi, dan berkomunikasi serta mengamalkan nilai murni.",
+                standard: "Murid terlibat dalam proses pembelajaran secara aktif, menunjukkan minat dan semangat ingin tahu serta bertanggungjawab terhadap pembelajaran.",
+                notes: [
+                    "<strong>Respons Murid:</strong> Murid menjawab soalan, bertanya, dan memberi pendapat secara spontan atau terancang.",
+                    "<strong>Kerjasama Pasukan:</strong> Murid bekerjasama dalam kumpulan, berkongsi idea, dan saling membantu (kolaborasi).",
+                    "<strong>Inisiatif & Inkuiri:</strong> Murid mencari maklumat tambahan sendiri dan menunjukkan rasa ingin tahu yang tinggi.",
+                    "<strong>Kepimpinan & Sahsiah:</strong> Murid menunjukkan nilai murni, disiplin kendiri, dan menghormati pandangan orang lain.",
+                    "<strong>Refleksi Kendiri:</strong> Murid sedar apa yang mereka pelajari dan apa yang mereka belum kuasai."
+                ],
+                skor4: "Memberi respon berkaitan isi pelajaran, berkomunikasi dalam melaksanakan aktiviti pembelajaran, melaksanakan aktiviti pembelajaran secara kolaboratif serta menunjukkan kreativiti/sifat ingin tahu dan mengamalkan nilai murni.",
+                questions: [
+                    { q: "Apakah ciri utama murid sebagai pembelajar aktif?", o: ["Diam dan mendengar sahaja", "Terlibat aktif, memberi respon dan bertanya", "Menunggu arahan guru 100%", "Menyalin nota dari papan hitam"], c: 1, d: "Mudah" },
+                    { q: "Komunikasi dalam 4.6 merujuk kepada...", o: ["Bercakap kosong dengan kawan", "Perbincangan berkaitan isi pelajaran", "Guru sahaja yang bercakap", "Menggunakan isyarat tangan"], c: 1, d: "Mudah" },
+                    { q: "Kolaborasi murid bermaksud mereka...", o: ["Bergaduh dalam kumpulan", "Bekerjasama menyelesaikan tugasan", "Bersaing secara tidak sihat", "Duduk berasingan"], c: 1, d: "Mudah" },
+                    { q: "Sifat ingin tahu (curiosity) ditunjukkan apabila murid...", o: ["Tidur dalam kelas", "Mengemukakan soalan 'Kenapa' dan 'Bagaimana'", "Hanya menjawab 'Ya' atau 'Tidak'", "Meniru jawapan buku"], c: 1, d: "Mudah" },
+                    { q: "Mengamalkan nilai murni di kelas termasuk...", o: ["Menghormati pendapat rakan", "Mencuri pembaris kawan", "Bercakap kasar dengan guru", "Membuang sampah di lantai"], c: 0, d: "Mudah" },
+                    { q: "Pembelajaran kendiri (self-directed learning) bermaksud murid...", o: ["Belajar tanpa guru selamanya", "Mempunyai inisiatif mencari ilmu dan bertanggungjawab atas kemajuan sendiri", "Hanya belajar di rumah", "Tidak mahu mendengar arahan guru"], c: 1, d: "Sederhana" },
+                    { q: "Bagaimana murid menunjukkan kreativiti dalam 4.6?", o: ["Menghasilkan karya atau solusi unik bagi tugasan", "Melukis di dalam buku teks", "Menukar tajuk pelajaran", "Memakai baju berwarna-warni"], c: 0, d: "Sederhana" },
+                    { q: "Kepimpinan murid dalam kumpulan dapat dilihat apabila...", o: ["Seorang murid membahagikan tugas dan membantu rakan lain", "Semua murid buat kerja sendiri", "Seorang murid buat semua kerja", "Murid bermain-main"], c: 0, d: "Sederhana" },
+                    { q: "Refleksi murid di akhir kelas membantu mereka untuk...", o: ["Lupakan apa yang belajar", "Menilai tahap kefahaman sendiri dan menetapkan matlamat seterusnya", "Mengetahui waktu balik", "Menilai kelemahan guru sahaja"], c: 1, d: "Sukar" },
+                    { q: "Hubungan antara 4.4.1 (Guru) dan 4.6 (Murid) adalah...", o: ["Simbiosis - Guru merangsang, murid bertindak balas aktif", "Tiada kaitan langsung", "Guru buat kerja, murid tengok sahaja", "Murid mengajar guru"], c: 0, d: "Sukar" }
+                ]
+            }
+        };
+
+        const motivationalQuotes = [
+            "Guru adalah pelita yang tidak pernah padam dalam membina peradaban manusia.",
+            "Kecemerlangan PdPc anda hari ini adalah sinar kejayaan murid anda di masa hadapan.",
+            "Mengajar bukan sekadar mengisi botol, tetapi menyalakan api inspirasi.",
+            "Standard 4 bukan beban, tetapi peta jalan ke arah profesionalisme keguruan yang hakiki.",
+            "Teruslah berkarya, kerana setiap usaha anda dicatat sebagai amal jariah yang tiada penghujung."
+        ];
+
+        let state = {
+            currentAspekt: null,
+            mode: 'note',
+            currentQuestionIdx: 0,
+            quizQuestions: []
+        };
+
+        function loadAspect(id) {
+            state.currentAspekt = id;
+            state.mode = 'note';
+            
+            // Update UI Nav
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.innerText.includes(id)) {
+                    btn.classList.add('bg-indigo-100', 'text-indigo-700', 'border-b-2', 'border-indigo-700');
+                    btn.classList.remove('hover:bg-slate-100');
+                } else {
+                    btn.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-b-2', 'border-indigo-700');
+                    btn.classList.add('hover:bg-slate-100');
+                }
             });
-        }
-        return arr;
-    }
-</script>
 
+            const data = skpmData[id];
+            let noteHtml = `
+                <div class="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="bg-indigo-700 text-white px-3 py-1 rounded-md font-bold">${id}</span>
+                        <h2 class="text-3xl font-bold text-slate-800">${data.title.split(':')[1]}</h2>
+                    </div>
+                    
+                    <div class="bg-indigo-50 border-l-4 border-indigo-600 p-6 rounded-r-lg mb-8">
+                        <h3 class="text-indigo-800 font-bold uppercase text-sm tracking-wider mb-2">Standard Kualiti</h3>
+                        <p class="text-slate-700 text-lg leading-relaxed italic">"${data.standard}"</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h3 class="text-slate-800 font-bold mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                Fokus Tindakan Guru
+                            </h3>
+                            <ul class="prose-list text-slate-600 space-y-4">
+                                ${data.notes.map(note => `<li>${note}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                            <h3 class="text-emerald-700 font-bold mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Syarat Skor 4 (Cemerlang)
+                            </h3>
+                            <p class="text-slate-600 leading-relaxed text-sm">
+                                ${data.skor4}
+                            </p>
+                            <div class="mt-6 p-4 bg-white rounded border border-emerald-100 text-xs text-slate-500">
+                                <strong>Nota Penilai:</strong> Skor 4 diberikan jika tindakan dilaksanakan dengan mematuhi ketetapan, secara menyeluruh, berterusan, dan mengikut keperluan murid.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('note-content').innerHTML = noteHtml;
+            document.getElementById('quiz-btn-container').classList.remove('hidden');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startQuiz() {
+            state.mode = 'quiz';
+            state.currentQuestionIdx = 0;
+            state.quizQuestions = [...skpmData[state.currentAspekt].questions];
+            
+            document.getElementById('note-view').classList.add('hidden');
+            document.getElementById('main-nav').classList.add('hidden');
+            document.getElementById('quiz-status').classList.remove('hidden');
+            document.getElementById('current-quiz-label').innerText = state.currentAspekt;
+            
+            document.getElementById('quiz-view').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = state.quizQuestions[state.currentQuestionIdx];
+            document.getElementById('question-number').innerText = `Soalan ${state.currentQuestionIdx + 1} / 10`;
+            document.getElementById('question-text').innerText = q.q;
+            
+            const badge = document.getElementById('difficulty-badge');
+            badge.innerText = q.d;
+            if(q.d === 'Mudah') badge.className = "px-3 py-1 bg-emerald-500 text-xs rounded-full uppercase font-bold";
+            else if(q.d === 'Sederhana') badge.className = "px-3 py-1 bg-amber-500 text-xs rounded-full uppercase font-bold";
+            else badge.className = "px-3 py-1 bg-rose-500 text-xs rounded-full uppercase font-bold";
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            q.o.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 border-2 border-slate-200 rounded-xl hover:border-indigo-500 hover:bg-indigo-50 transition font-medium flex justify-between items-center group active:bg-indigo-100";
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <span class="opacity-0 group-hover:opacity-100 text-indigo-500 text-sm">Pilih &raquo;</span>
+                `;
+                btn.onclick = () => checkAnswer(idx);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('feedback-message').classList.add('hidden');
+        }
+
+        function checkAnswer(idx) {
+            const q = state.quizQuestions[state.currentQuestionIdx];
+            const feedback = document.getElementById('feedback-message');
+            
+            if(idx === q.c) {
+                feedback.innerText = "TEPAT! Teruskan ke soalan seterusnya.";
+                feedback.className = "mt-6 p-4 rounded-lg text-center font-bold bg-emerald-100 text-emerald-800 animate-pulse";
+                feedback.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    state.currentQuestionIdx++;
+                    if(state.currentQuestionIdx < 10) {
+                        renderQuestion();
+                    } else {
+                        showCongrats();
+                    }
+                }, 800);
+            } else {
+                feedback.innerText = "KURANG TEPAT. Cuba fikirkan semula berdasarkan nota tadi.";
+                feedback.className = "mt-6 p-4 rounded-lg text-center font-bold bg-rose-100 text-rose-800";
+                feedback.classList.remove('hidden');
+                
+                const quizBox = document.querySelector('#quiz-view > div');
+                quizBox.classList.add('animate-bounce');
+                setTimeout(() => quizBox.classList.remove('animate-bounce'), 500);
+            }
+        }
+
+        function showCongrats() {
+            state.mode = 'congrats';
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('congrats-view').classList.remove('hidden');
+            
+            const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            document.getElementById('motivational-quote').innerText = randomQuote;
+        }
+
+        function exitQuiz() {
+            document.getElementById('congrats-view').classList.add('hidden');
+            document.getElementById('quiz-status').classList.add('hidden');
+            document.getElementById('main-nav').classList.remove('hidden');
+            document.getElementById('note-view').classList.remove('hidden');
+            loadAspect(state.currentAspekt);
+        }
+    </script>
 </body>
 </html>
