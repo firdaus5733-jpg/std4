@@ -228,7 +228,7 @@
                 standard: "Menunjukkan prihatin terhadap keperluan dan perasaan murid.",
                 notes: [
                     "<strong>Peneguhan Positif:</strong> Pujian dan ganjaran non-verbal.",
-                    "<strong>Empati:</strong> Memahami masalah murid dan memberi semangat.",
+                    "<strong>Empati:</strong> Memahami masalah murid and memberi semangat.",
                     "<strong>Keyakinan:</strong> Murid berani tampil tanpa rasa takut.",
                     "<strong>Mendengar Aktif:</strong> Perhatian penuh kepada pandangan murid."
                 ],
@@ -273,14 +273,14 @@
             "4.6": {
                 title: "Aspek 4.6: Murid Sebagai Pembelajar Aktif",
                 description: "Murid terlibat, berkolaborasi, dan mengamalkan nilai murni.",
-                standard: "Murid menunjukkan minat dan semangat ingin tahu dalam belajar.",
+                standard: "Murid menunjukkan minat and semangat ingin tahu dalam belajar.",
                 notes: [
                     "<strong>Respons:</strong> Menjawab, bertanya, dan memberi pendapat.",
-                    "<strong>Kolaborasi:</strong> Bekerjasama dan berkongsi idea.",
+                    "<strong>Kolaborasi:</strong> Bekerjasama and berkongsi idea.",
                     "<strong>Inisiatif:</strong> Mencari maklumat sendiri.",
-                    "<strong>Sahsiah:</strong> Menunjukkan disiplin dan nilai murni."
+                    "<strong>Sahsiah:</strong> Menunjukkan disiplin and nilai murni."
                 ],
-                skor4: "Memberi respon, berkomunikasi dan melaksanakan aktiviti secara kolaboratif.",
+                skor4: "Memberi respon, berkomunikasi and melaksanakan aktiviti secara kolaboratif.",
                 questions: [
                     { q: "Ciri murid aktif...", o: ["Diam", "Respon & Tanya", "Tunggu arahan", "Salin nota"], c: 1, d: "Mudah" },
                     { q: "Komunikasi 4.6 ialah...", o: ["Kosong", "Isi pelajaran", "Guru saja cakap", "Isyarat"], c: 1, d: "Mudah" },
@@ -355,7 +355,7 @@
                             </h3>
                             <p class="text-slate-600 leading-relaxed text-sm">${data.skor4}</p>
                             <div class="mt-6 p-4 bg-white rounded border border-emerald-100 text-xs text-slate-500">
-                                <strong>Nota:</strong> Skor 4 jika menyeluruh, berterusan, dan mengikut keperluan murid.
+                                <strong>Nota:</strong> Skor 4 jika menyeluruh, berterusan, and mengikut keperluan murid.
                             </div>
                         </div>
                     </div>
